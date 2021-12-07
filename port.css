@@ -1,50 +1,74 @@
-body {
-    background-color: rgba(250, 235, 215, 0.418);
+@import url('https://fonts.googleapis.com/css2?family=Comforter&family=Dancing+Script&family=Fuzzy+Bubbles&family=Gwendolyn&family=Indie+Flower&family=Press+Start+2P&family=Roboto:wght@400;700&family=Shadows+Into+Light&display=swap');
+
+
+*{
+    box-sizing: border-box;
 }
 
-.wrapper{
-    width:940px;
-    margin:20px auto 20px auto;
-    border:2px solid #000000;
-    /* background-color: #ffffff; */
+body{
+    font-family:'Fuzzy Bubbles', sans-serif;
+    background-color: rgba(206, 175, 134, 0.418);
+    color: #222;
+    overflow-x: hidden;
+    margin: 0;
+}
+.container{
+    background-color: #eeeeeee8;;
+    transform-origin: top left;
+    transition: transform 0.5s linear;
+    width: 100vw;
+    min-height: 100vh;
+    padding: 50px;
 }
 
-header{
-    height:160px;
-    background-image: url('laptop.jpg');
-    background-position: center;
-    background-size: cover;
+.container.show-nav{
+    transform: rotate(-20deg);
 }
 
-nav ul{
-    margin:0px;
-    padding:5px 0px 5px 30px;
+.circle-container{
+    position: fixed;
+    top: -100px;
+    left: -100px;
 }
 
-
-nav li{
-    display:inline;
-    margin-right:40px;
+.circle{
+    background-color: #ff7979;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.5s linear;
 }
 
-nav li a {
-    color: #ffffff;
+.container.show-nav .circle {
+    transform: rotate(-70deg);
 }
 
-nav li a :hover, nav li a.current{color:#000000;}
+.circle button{
 
-.intro{
-    float:left;
-    width:659px;
-    border-right: 1px solid #eeeeeee8;
+    cursor: pointer;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    height: 100px;
+    background: transparent;
+    border: 0;
+    font-size: 26px;
+    color: #fff;
 }
 
-.projects{
-    float:left;
-    width: 100%;
-    padding: 5px;
-    margin:20px;
-    border: 1px solid #eeeeee;
+.circle button:focus{
+    outline: none;
+}
+
+.circle button#open{
+    left:60%;
+}
+
+.circle button#close{
+    top: 60%;
+    transform: rotate(90deg);
+    transform-origin: top left;
 }
 
 img{
@@ -55,19 +79,123 @@ img{
     border-radius: 50%;
 }
 
-.intro{
-    float: left;
-    width:40%;
-    margin: 10px;
-    margin-bottom: 20px;
-}
-
 .pic{
-    width:50%;
-    float: right;
+    width: 300px;
+    height: 300px;
+    margin: 5px;
+    border-radius: 50%;
 }
 
-.pic-intro {
-    width: 100%;
+.box{
+    background-color: #efedd6;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        left: 500px;
+        bottom: 300px;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        width: 400px;
+        height: 100px;
+        margin:10px;
+        border-radius: 10px;
+        box-shadow: 2px 4px 5px rgba(0,0,0,0.3);
+        transform: translateX(400px);
+        transition: transform 0.4s ease;
 }
 
+.box ul {
+    list-style-type: none;
+}
+
+.box:nth-of(even){
+    transform: translateX(-200%);
+}
+
+.box.show{
+    transform: translateX(0);
+}
+
+.nameHeader{
+    display:flex;
+    height:100%;
+    align-items: center;
+    font-size: 800px;
+    color:#ff7979;
+    position: absolute;
+    top: 0px;
+    right:400px;
+    width: 250px;
+    font-family: "Press Start 2P";
+    transition: ease-in 0.4s;
+}
+
+.nameHeader h1 {
+    font-family: "Press Start 2P";
+    font-size: 300px;
+}
+.moreProjects{
+    font-size: 50px;
+    font-family: "Indie Flower";
+}
+.content img{
+    max-width: 100%;
+}
+
+.content{
+    max-width: 1000px;
+    margin:  50px auto;
+    font-size: 20px;
+}
+
+.content h1{
+    margin: 0;
+    font-family: "Press Start 2P";
+    font-size: 50px;
+}
+
+.container.show-nav + nav li{
+    transform: translateX(0);
+    transition-delay: 0.3s;
+}
+
+nav{
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    z-index: 100;
+}
+
+nav ul{
+    list-style-type: none;
+    padding-left:30px;
+}
+
+nav ul li a {
+    text-transform: uppercase;
+    color: #fff;
+    margin: 40px 0;
+    
+}
+
+nav ul li{
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in;
+    padding: 5px 0px 5px 30px;
+}
+
+nav ul li i {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+nav ul li +li {
+    margin-left: 30px;
+    transform: translateX(-150%);
+}
+
+nav ul li + li + li {
+    margin-left: 30px;
+    transform: translateX(-200%);
+}
